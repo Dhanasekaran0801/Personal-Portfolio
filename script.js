@@ -34,31 +34,37 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Active navigation link highlighting
+    // Active navigation link highlighting using IntersectionObserver
     const sections = document.querySelectorAll('section[id]');
     const navItems = document.querySelectorAll('.nav-link');
 
-    function highlightNavLink() {
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 120;
-            const sectionHeight = section.clientHeight;
-            if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
-                current = section.getAttribute('id');
-            }
-        });
-
+    // Helper to set active classes
+    function setActiveLink(id) {
         navItems.forEach(item => {
             item.classList.remove('text-green-400');
             item.classList.add('text-gray-300');
-            if (item.getAttribute('href') === `#${current}`) {
+            if (item.getAttribute('href') === `#${id}`) {
                 item.classList.remove('text-gray-300');
                 item.classList.add('text-green-400');
             }
         });
     }
 
-    window.addEventListener('scroll', highlightNavLink);
+    // Observe sections to highlight nav links when they appear
+    const navObserverOptions = {
+        root: null,
+        threshold: 0.45 // roughly half the section
+    };
+
+    const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                setActiveLink(entry.target.id);
+            }
+        });
+    }, navObserverOptions);
+
+    sections.forEach(section => navObserver.observe(section));
 
     // Contact form handling
     const contactForm = document.getElementById('contact-form');
