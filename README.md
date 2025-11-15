@@ -2,7 +2,7 @@
 
 A professional, modern, and responsive portfolio website showcasing cybersecurity expertise, Python development skills, and AI enthusiasm.
 
-Watch LIVE at: https://portfolio-webpage-five-rho.vercel.app/
+
 
 ## 🎯 Features
 
