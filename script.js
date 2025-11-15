@@ -38,10 +38,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const sections = document.querySelectorAll('section[id]');
     const navItems = document.querySelectorAll('.nav-link');
 
+<<<<<<< HEAD
     // Convert to array and track current section index for swipe navigation
     const sectionsArray = Array.from(sections);
     let currentSectionIndex = 0;
 
+=======
+>>>>>>> 55547799a5bd33045fed77017648c30929388d52
     // Helper to set active classes
     function setActiveLink(id) {
         navItems.forEach(item => {
@@ -64,9 +67,12 @@ document.addEventListener('DOMContentLoaded', function() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 setActiveLink(entry.target.id);
+<<<<<<< HEAD
                 // update current index when a section becomes active
                 const idx = sectionsArray.indexOf(entry.target);
                 if (idx !== -1) currentSectionIndex = idx;
+=======
+>>>>>>> 55547799a5bd33045fed77017648c30929388d52
             }
         });
     }, navObserverOptions);
@@ -177,6 +183,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1000);
     }
 
+<<<<<<< HEAD
     // Parallax effect for hero inner content (do not move the section itself)
     (function setupParallax() {
         const heroInner = document.querySelector('#home .hero-inner');
@@ -195,6 +202,16 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, { passive: true });
     })();
+=======
+    // Parallax effect for hero section
+    window.addEventListener('scroll', function() {
+        const scrolled = window.pageYOffset;
+        const heroSection = document.querySelector('#home');
+        if (heroSection) {
+            heroSection.style.transform = `translateY(${scrolled * 0.5}px)`;
+        }
+    });
+>>>>>>> 55547799a5bd33045fed77017648c30929388d52
 
     // Skill badges hover effect
     const skillBadges = document.querySelectorAll('.skill-badge');
@@ -392,6 +409,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     createScrollProgress();
 
+<<<<<<< HEAD
     // --- Touch / swipe navigation (vertical sections) ---
     let touchStartY = 0;
     let touchEndY = 0;
@@ -437,6 +455,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, false);
 
+=======
+>>>>>>> 55547799a5bd33045fed77017648c30929388d52
     // Add theme toggle (optional for future enhancement)
     function createThemeToggle() {
         const themeToggle = document.createElement('button');
